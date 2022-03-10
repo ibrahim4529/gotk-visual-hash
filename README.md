@@ -6,9 +6,20 @@ Also Inspired from [https://github.com/emsifa/visual-hashing-yew](https://github
 
 
 ### Build 
+This app require gtk3 libraries and also go programming language
+install libs on macos
+```bash
+brew install gtk+3 go
+```
+install libs on linux debian based
+```bash
+sudo apt-get install libgtk-3-dev
+```
+install golang deps
 ```bash
 go get
 ```
+running app
 ```bash
 go run .
 ```
