@@ -11,8 +11,8 @@
     <gtk>gtk+-3.0</gtk>
   </meta>
 
-  <plist>${project}/Info-gtk-visual-hash.plist</plist>
-  <main-binary dest="${bundle}/Contents/MacOS">${env:GITHUB_WORKSPACE}/build/gtk_visual_hash_mac</main-binary>
+  <plist>${project}/Info-visualhash.plist</plist>
+  <main-binary dest="${bundle}/Contents/MacOS">${env:GITHUB_WORKSPACE}/build/visualhash</main-binary>
   <data dest="${bundle}/Contents/Resources">${project}/icon.icns</data>
   <binary>${prefix}/lib/libgtk-3.0.dylib</binary>
   <binary>

@@ -45,15 +45,15 @@ jobs:
             CMD_BUILD: |
               export PKG_CONFIG_PATH="$CONDA/lib/pkgconfig"
               go mod tidy -compat="1.17"
-              go build -o build/gtk_visual_hash_mac -ldflags "-s -w" .
-            OUT_FILE_NAME: gtk_visual_hash_mac.zip
+              go build -o build/visualhash_mac -ldflags "-s -w" .
+            OUT_FILE_NAME: visualhash_mac.zip
             ASSET_MIME: application/zip
             CMD_POST_BUILD: |
               git clone https://github.com/mc51/gtk-mac-bundler
               cd gtk-mac-bundler && make install
               cd ../ && export PKG_CONFIG_PATH="$CONDA/lib/pkgconfig"
-              ~/.local/bin/gtk-mac-bundler ./build/bundle/gtk-visual-hash.bundle
-              ls -lah && cd build && zip -r9 gtk_visual_hash_mac gtk_visual_hash_mac.app/
+              ~/.local/bin/gtk-mac-bundler ./build/bundle/visualhash.bundle
+              ls -lah && cd build && zip -r9 visualhash_mac visualhash_mac.app/
           - os: ubuntu-latest
             TARGET: linux
             SHELL: bash
@@ -62,29 +62,29 @@ jobs:
               sudo apt-get -y install libgtk-3-dev libappindicator3-dev
             CMD_BUILD: |
               go mod tidy -compat="1.17"
-              go build -o build/gtk_visual_hash_linux -ldflags "-s -w" .
-              cd build && zip -r9 gtk_visual_hash_linux gtk_visual_hash_linux
-            OUT_FILE_NAME: gtk_visual_hash_linux.zip
+              go build -o build/visualhash_linux -ldflags "-s -w" .
+              cd build && zip -r9 visualhash_linux visualhash_linux
+            OUT_FILE_NAME: visualhash_linux.zip
             ASSET_MIME: application/zip  # application/octet-stream
           - os: windows-2019
             TARGET: windows
             SHELL: msys2 {0}
             CMD_BUILD: |
               go get github.com/akavel/rsrc && rsrc -ico assets/icon.ico
-              mkdir -p build/clipster build/bin/ build/lib/
+              mkdir -p build/visualhash build/bin/ build/lib/
               mkdir -p build/share/glib-2.0/ build/share/icons/Adwaita/
               sed -i -e 's/-Wl,-luuid/-luuid/g' /mingw64/lib/pkgconfig/gdk-3.0.pc
               go mod tidy -compat="1.17"
-              go build -o build/bin/gtk_visual_hash_win.exe -ldflags "-H=windowsgui -s -w" .
+              go build -o build/bin/visualhash_win.exe -ldflags "-H=windowsgui -s -w" .
               mv /mingw64/bin/*.dll build/bin/
               mv /mingw64/share/icons/hicolor/ build/share/icons/
               cp /mingw64/share/icons/Adwaita/* build/share/icons/Adwaita/ || :
               mv /mingw64/share/icons/Adwaita/16x16/ build/share/icons/Adwaita/
               mv /mingw64/share/glib-2.0/schemas/  build/share/glib-2.0/
               mv /mingw64/lib/gdk-pixbuf-2.0/ build/lib/
-              cd build && mv * clipster/ || :
-              zip -r9 gtk_visual_hash_win clipster/
-            OUT_FILE_NAME: gtk_visual_hash_win.zip
+              cd build && mv * visualhash/ || :
+              zip -r9 visualhash_win visualhash/
+            OUT_FILE_NAME: visualhash_win.zip
             ASSET_MIME: application/zip
     steps:
     - uses: s-weigand/setup-conda@v1

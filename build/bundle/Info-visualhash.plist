@@ -5,11 +5,11 @@
     <key>CFBundleDevelopmentRegion</key>
     <string>English</string>
     <key>CFBundleExecutable</key>
-    <string>clipster_mac</string>
+    <string>visualhash_mac</string>
     <key>CFBundleGetInfoString</key>
     <string>0.1.0 (C) 2021 Liostech https://github.com/ibrahim4529</string>
     <key>CFBundleIdentifier</key>
-    <string>org.data-dive.com</string>
+    <string>id.liostech.visualhash</string>
     <key>CFBundleIconFile</key>
     <string>icon.icns</string>
     <key>CFBundleInfoDictionaryVersion</key>
