@@ -12,7 +12,7 @@
   </meta>
 
   <plist>${project}/Info-visualhash.plist</plist>
-  <main-binary dest="${bundle}/Contents/MacOS">${env:GITHUB_WORKSPACE}/build/visualhash</main-binary>
+  <main-binary dest="${bundle}/Contents/MacOS">${env:GITHUB_WORKSPACE}/build/visualhash_mac</main-binary>
   <data dest="${bundle}/Contents/Resources">${project}/icon.icns</data>
   <binary>${prefix}/lib/libgtk-3.0.dylib</binary>
   <binary>
